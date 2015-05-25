@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('f1-index')
 .factory('User', function($rootScope, $http, nodeUrl){
   function User(){
   }

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('f1-index')
 .controller('UsersCtrl', function($scope, $state, $window, User){
   $scope.name = $state.current.name;
 

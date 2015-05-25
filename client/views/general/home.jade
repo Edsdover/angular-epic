@@ -1,1 +1,26 @@
 h3 HOME
+.row
+  .col-xs-4.col-xs-offset-2
+    h3 LeaderBoard
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th User
+          th Points
+          th Rank
+      tbody
+        tr
+          td Edsdover
+          td 0
+          td 1st
+  .col-xs-4.col-xs-offset-1
+    .form-group
+      h4 Pick a Track
+      input.form-control.input(type='text', ng-model='year')
+      h4 Pick a driver
+      input.form-control.input(type='text', ng-model='year')
+      h4 Predict his possition
+      input.form-control.input(type='text', ng-model='year')
+      h4 Pick a Fastest Lap Time
+      input.form-control.input(type='text', ng-model='year')
+      button.btn.btn-success Lock in
