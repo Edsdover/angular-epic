@@ -7,6 +7,7 @@ angular.module('f1-index')
   $stateProvider
   .state('home', {url: '/', templateUrl: '/views/general/home.html'})
   .state('dashboards', {url: '/dashboards', templateUrl: '/views/general/dashboards.html', controller: 'DashboardsCtrl'})
+  .state('profile', {url: '/profile', templateUrl: '/views/users/profile.html', controller: 'ProfileCtrl'})
   .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})

@@ -1,58 +1,6 @@
 .row
-  .col-xs-12
-    h1 Formula 1 Statistics Board
+  .col-xs-11
+    h1 DashBoard
 .row
-  .form-group
-    .col-xs-4
-      input#inputLarge.form-control.input(type='text', placeholder='Please enter a season year here...', ng-model='year')
-    .col-xs-2
-      a.btn.btn-success.btn-large(ng-click='findYear()') Search
-.row
-  .col-xs-6
-    h3 Search By Year
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th #
-          th Year
-          th Nationality
-          th Constructor
-          th Championship Position
-          th Wins
-          th Points
-      tbody
-        tr(ng-repeat='dude in driverInfo track by $index')
-          td {{dude.Driver.permanentNumber}}
-          td: a(href='{{dude.Driver.url}}', target='_blank'){{dude.Driver.givenName}} {{dude.Driver.familyName}}
-          td {{dude.Driver.nationality}}
-          td: a(href='{{dude.Constructors[0].url}}', target='_blank'){{dude.Constructors[0].name}}
-          td {{dude.position}}
-          td {{dude.wins}}
-          td {{dude.points}}
-.row
-  .col-xs-4
-    input#inputLarge.form-control.input(type='text', placeholder='Please enter a Driver here...', ng-model='year')
-  .col-xs-2
-    a.btn.btn-success.btn-large(ng-click='findYear()') Search
-.row
-  .col-xs-6
-    h3 Search By Driver
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th #
-          th Driver
-          th Nationality
-          th Constructor
-          th Championship Position
-          th Wins
-          th Points
-      tbody
-        tr(ng-repeat='dude in driverInfo track by $index')
-          td {{dude.Driver.permanentNumber}}
-          td: a(href='{{dude.Driver.url}}', target='_blank'){{dude.Driver.givenName}} {{dude.Driver.familyName}}
-          td {{dude.Driver.nationality}}
-          td: a(href='{{dude.Constructors[0].url}}', target='_blank'){{dude.Constructors[0].name}}
-          td {{dude.position}}
-          td {{dude.wins}}
-          td {{dude.points}}
+  .col-md-5.col-md-offset-1.col-xs-11
+    button.btn.btn-xs.btn-warning(ng-click='editProfile()') Edit Profile

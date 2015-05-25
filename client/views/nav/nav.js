@@ -3,7 +3,7 @@
 angular.module('f1-index')
 .controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User){
   function goHome(){
-    $state.go('home');
+    $state.go('dashboards');
   }
 
   function getDisplayName(data){
