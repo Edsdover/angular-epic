@@ -3,7 +3,7 @@
 angular.module('f1-index')
 .controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User){
   function goHome(){
-    $state.go('dashboards');
+    $state.go('home');
   }
 
   function getDisplayName(data){
@@ -26,10 +26,10 @@ angular.module('f1-index')
       $rootScope.activeUser = data;
       $rootScope.displayName = getDisplayName(data);
       $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
-      User.initialize().then(function(response){
-        $rootScope.activeUser.mongoId = response.data;
-        goHome();
-      });
+      // User.initialize().then(function(response){
+      //   $rootScope.activeUser.mongoId = response.data;
+      //   goHome();
+      // });
     }else{
       $rootScope.activeUser = null;
       $rootScope.displayName = null;
@@ -40,5 +40,6 @@ angular.module('f1-index')
 
   $scope.logout = function(){
     User.logout();
+    goHome();
   };
 });

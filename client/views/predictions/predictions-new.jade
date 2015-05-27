@@ -1,0 +1,98 @@
+h2.bold.underline Predictions Control:
+.row
+  .col-md-6.col-md-offset-1.col-xs-11
+    h4#predictionHeader.bold Fill out the boxes below to make your predictions!
+  .col-md-5.col-xs-11
+    h4 Rules:
+    p#predictionDirections
+      | Predictions for each Grand Prix will open two weeks prior to the race.
+      br
+      | The cut off for submission is
+      u.bold midnight
+      |  before the first qualifying session.
+      br
+      | Season predictions will close after the 
+      u sixth
+      |  race of the season.
+.row.white
+  h4.predictionHeader.center {{currentSeason}} Season Predictions:
+  .col-md-3.col-md-offset-1.col-xs-11
+    form(name='userForm', novalidate)
+      .form-group
+        h6 World Champion : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.driverFirstPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+      .form-group
+        h6 Second Place : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.driverSecondPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+      .form-group
+        h6 Third Place : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.driverThirdPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+  .col-md-3.col-xs-11
+      .form-group
+        h6 Constructor Champion : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.constructorFirstPlace', ng-options='constructor.Constructor.name for constructor in constructors')
+            option(value='') Select Constructor
+      .form-group
+        h6 Second Place Constructor : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.constructorSecondPlace', ng-options='constructor.Constructor.name for constructor in constructors')
+            option(value='') Select Constructor
+      .form-group
+        h6 Third Place Constructor : {{selectedItem}}
+          select.options.gray(ng-model='seasonPrediction.constructorThirdPlace', ng-options='constructor.Constructor.name for constructor in constructors')
+            option(value='') Select Constructor
+  .col-md-3.col-xs-11
+    .form-group
+      h6 Total Season Retirements
+        input.options.gray(type='number' ng-model='seasonPrediction.totalRetirements')
+      h6.inputPadding Most Poll Positions
+        input.options.gray(type='number' ng-model='seasonPrediction.topPoll')
+      h6.inputPadding Number of Disqualifications
+        input.options.gray(type='number' ng-model='seasonPrediction.disqualifications')
+.row.white
+  .col-xs-3.col-xs-offset-4
+    .form-group
+      button.btn.btn-sm.btn-success.options(ng-click='submitSeasonPrediction(seasonPredictiong)') Submit Prediction
+.row#topMargin.white
+  h4.predictionHeader.center(ng-model='racePrediction.currentRace') {{currentRace}} Predictions:
+  .col-md-3.col-md-offset-1.col-xs-11
+    form(name='userForm', novalidate)
+      .form-group
+        h6 First Place : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.driverFirstPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+      .form-group
+        h6 Second Place : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.driverSecondPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+      .form-group
+        h6 Third Place : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.driverThirdPlace', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+  .col-md-3.col-xs-11
+      .form-group
+        h6 Poll Position : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.pollPosition', ng-options='driver.familyName for driver in drivers')
+            option(value='') Select Driver
+      .form-group
+        h6 Fastest Lap Driver : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.driverLapTime', ng-options='driver.familyName for driver in drivers')
+                option(value='') Select Driver
+      .form-group
+        h6 First Place Constructor : {{selectedItem}}
+          select.options.gray(ng-model='racePrediction.constructorFristPlace', ng-options='constructor.Constructor.name for constructor in constructors')
+            option(value='') Select Constructor
+  .col-md-3.col-xs-11
+    .form-group
+      h6 Quickest Pit Stop
+        input.options.gray(type='number' ng-model='racePrediction.pitStop')
+      h6.inputPadding Fastest Lap Time
+        input.options.gray(type='number' ng-model='racePrediction.lapTime')
+      h6.inputPadding Number of Retirements
+        input.options.gray(type='number' ng-model='racePrediction.disqualifications')
+.row.white
+  .col-xs-3.col-xs-offset-4
+    .form-group
+      button.btn.btn-sm.btn-success.options(ng-click='submitRacePrediction(racePrediction)') Submit Prediction

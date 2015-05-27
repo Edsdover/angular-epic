@@ -10,12 +10,13 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left(ng-show='activeUser')
         li: a(ui-sref='dashboards'): i.fa.fa.fa-info &nbsp; Dashboard
+        li: a(ui-sref='predictions.new'): i.fa.fa.fa-cog &nbsp; Prediction Control
       ul.nav.navbar-nav.navbar-right(ng-show='activeUser')
         li: a(ui-sref='profile'): i.fa.fa-reddit &nbsp; Profile
         //- li: a(ui-sref='home'): i.fa.fa.fa-home &nbsp; Home
         //- li: a(ui-sref='faq'): i.fa.fa.fa-question &nbsp; FAQ
         //- li: a(ui-sref='contact'): i.fa.fa.fa-phone &nbsp; Contact
-        li: button.btn.btn-danger(ng-click='logout()'): i.fa.fa-sign-out &nbsp; {{displayName}}
+        li: button.btn-md.btn-info#logout(ng-click='logout()'): i.fa.fa-sign-out &nbsp; Logout of: {{displayName}}
       ul.nav.navbar-nav.navbar-right(ng-hide='activeUser')
         //- li: a(ui-sref='home'): i.fa.fa.fa-home &nbsp; Home
         //- li: a(ui-sref='about'): i.fa.fa.fa-info &nbsp; About
