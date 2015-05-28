@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('f1-index')
-.controller('PredictionsCtrl', function($scope, $window, Prediction){
+.controller('PredictionsCtrl', function($rootScope, $scope, $window, Prediction){
 
   var date = new Date();
   var year = date.getFullYear();
@@ -33,7 +33,7 @@ angular.module('f1-index')
         if(momentDate < race.date){
           upcommingRaces.push(race);
           var nextRace = upcommingRaces[0].raceName;
-          $scope.currentRace = nextRace;
+          $rootScope.currentRace = nextRace;
         }
       });
     });
@@ -47,7 +47,7 @@ angular.module('f1-index')
     var prediction = new Prediction(obj);
     obj.raceName = $scope.currentRace;
     obj.username = $scope.displayName;
-    console.log(obj);
+    console.log('obj', obj);
     prediction.save(obj)
     .then(function(){
       $window.swal({title: 'Profile Updated', text: 'Congratulations, your profile was updated.', type: 'success'});
