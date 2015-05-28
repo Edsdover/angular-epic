@@ -12,9 +12,6 @@ angular.module('f1-index')
     this.avatar = obj.avatar;
   }
 
-  // User.initialize = function(){
-  //   return $http.post(nodeUrl + '/users');
-  // };
   User.prototype.save = function(){
     return $http.put(nodeUrl + '/users', this);
   };

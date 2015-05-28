@@ -7,10 +7,10 @@
   ],
   "license": "BSD",
   "dependencies": {
-    "lodash": "~3.9.2",
+    "lodash": "~3.9.3",
     "font-awesome": "~4.3.0",
     "firebase": "~2.2.5",
-    "angular": "~1.3.15",
+    "angular": "~1.4.0",
     "angularfire": "~1.1.1",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.4",
@@ -18,5 +18,8 @@
     "sweetalert": "~1.0.1",
     "webcamjs": "*",
     "moment": "~2.10.3"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
   }
 }

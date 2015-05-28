@@ -13,7 +13,13 @@ angular.module('f1-index')
   momentTwoWeeks.push(momentTwoWeeks.splice(0,1));
   momentTwoWeeks.push(momentTwoWeeks.splice(0,1));
   $scope.drivers = null;
-  $scope.currentSeason = year;
+  $rootScope.currentSeason = year;
+  var username = $scope.displayName;
+
+  Prediction.findAll(username)
+  .then(function(response){
+    console.log(response);
+  });
 
   $window.$.getJSON('http://ergast.com/api/f1/' + year + '/drivers.json', function(response){
     $scope.$apply(function() {
@@ -40,13 +46,22 @@ angular.module('f1-index')
   });
 
   $scope.submitSeasonPrediction = function(obj){
-    console.log(obj);
-
+    var prediction = new Prediction(obj);
+    obj.currentSeason = $scope.currentSeason;
+    obj.username = username;
+    console.log('obj', obj);
+    prediction.save(obj)
+    .then(function(){
+      $window.swal({title: 'Profile Updated', text: 'Congratulations, your profile was updated.', type: 'success'});
+    })
+    .catch(function(){
+      $window.swal({title: 'Profile Save Error', text: 'Warning, there was a problem saving your profile.', type: 'error'});
+    });
   };
   $scope.submitRacePrediction = function(obj){
     var prediction = new Prediction(obj);
     obj.raceName = $scope.currentRace;
-    obj.username = $scope.displayName;
+    obj.username = username;
     console.log('obj', obj);
     prediction.save(obj)
     .then(function(){
