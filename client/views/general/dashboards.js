@@ -1,17 +1,42 @@
 'use strict';
 
 angular.module('f1-index')
-.controller('DashboardsCtrl', function($scope, $state, User){
+.controller('DashboardsCtrl', function($scope, $state, User, Prediction){
 
-  User.show()
+  var username = $scope.displayName;
+
+  User.find($scope.activeUser.uid)
   .then(function(response){
-    $scope.user = response.data;
+    console.log(response);
+    $scope.user = response.data.user;
   });
-
+  var userPredictions = [];
+  Prediction.findAll(username)
+  .then(function(response){
+    var fullArray = response.data.predictions;
+    fullArray.forEach(function(prediction){
+      if(prediction.username === username){
+        userPredictions.push(prediction);
+        setScope();
+      }
+    });
+  });
+  
+  $scope.racePredictions = [];
+  $scope.seasonPrediction = [];
+  function setScope(){
+    userPredictions.forEach(function(prediction){
+      if(prediction.constructorThirdPlace){
+        $scope.seasonPrediction = prediction;
+      }else if(prediction.pollPosition){
+        $scope.racePredictions.push(prediction);
+      }
+    });
+  }
   $scope.editProfile = function(){
     $state.go('profile');
   };
   $scope.newPrediction = function(){
-    console.log('click');
-  }
+    $state.go('predictions.new');
+  };
 });

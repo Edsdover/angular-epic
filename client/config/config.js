@@ -7,7 +7,7 @@ angular.module('f1-index')
   $stateProvider
   // .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   // .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
+  .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
   .state('predictions', {url: '/predictions', templateUrl: '/views/predictions/predictions.html', abstract: true})
   .state('predictions.new', {url: '/new', templateUrl: '/views/predictions/predictions-new.html', controller: 'PredictionsCtrl'})
   .state('dashboards', {url: '/dashboards', templateUrl: '/views/general/dashboards.html', controller: 'DashboardsCtrl'})

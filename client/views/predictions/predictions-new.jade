@@ -14,7 +14,10 @@ h2.bold.underline Predictions Control:
       | Season predictions will close after the 
       u sixth
       |  race of the season.
-.row.white
+.row.white(ng-if='seasonFormComplete')
+  .col-xs-8.col-xs-offset-3
+    h4 You have submitted your predictions for the current season!
+.row.white(ng-if='!seasonFormComplete')
   h4.predictionHeader.center {{currentSeason}} Season Predictions:
   .col-md-3.col-md-offset-1.col-xs-11
     form(name='userForm', novalidate)
@@ -51,11 +54,14 @@ h2.bold.underline Predictions Control:
         input.options.gray(type='number' ng-model='seasonPrediction.topPoll')
       h6.inputPadding Number of Disqualifications
         input.options.gray(type='number' ng-model='seasonPrediction.disqualifications')
-.row.white
+.row.white(ng-if='!seasonFormComplete')
   .col-xs-3.col-xs-offset-4
     .form-group
       button.btn.btn-sm.btn-success.options(ng-click='submitSeasonPrediction(seasonPrediction)') Submit Prediction
-.row#topMargin.white
+.row.topMargin.white(ng-if='raceFormComplete')
+  .col-xs-8.col-xs-offset-3
+    h4 You have submitted your predictions for the current race!
+.row.topMargin.white(ng-if='!raceFormComplete')
   h4.predictionHeader.center(ng-model='racePrediction.currentRace') {{currentRace}} Predictions:
   .col-md-3.col-md-offset-1.col-xs-11
     form(name='userForm', novalidate)
@@ -92,7 +98,7 @@ h2.bold.underline Predictions Control:
         input.options.gray(type='number' ng-model='racePrediction.lapTime')
       h6.inputPadding Number of Retirements
         input.options.gray(type='number' ng-model='racePrediction.disqualifications')
-.row.white
+.row.white(ng-if='!raceFormComplete')
   .col-xs-3.col-xs-offset-4
     .form-group
       button.btn.btn-sm.btn-success.options(ng-click='submitRacePrediction(racePrediction)') Submit Prediction

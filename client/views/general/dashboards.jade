@@ -16,10 +16,35 @@ h2 DashBoard
   form(name='userForm', novalidate)
     .form-group
       h3.underline.bold.predictionHeader Profile Stats
-      h4 Your Points This Season: {{prediction.last}}
-      h4 Your Rank This Season: {{user.rank}}
+      h4 Your Points This Season: {{user.points}} 0
+      h4 Your Rank This Season: {{user.rank}} 1
       button.btn.btn-success.button(ng-click='newPrediction()') Make Predictions
-      h4.underline Last Race Result:
+      h4.underline.topMargin {{seasonPrediction.currentSeason}} Season Predictions:
+      h5 Driver First Place Prediction: {{seasonPrediction.driverFirstPlace.familyName}}
+      h5 Driver Second Place Prediction: {{seasonPrediction.driverSecondPlace.familyName}}
+      h5 Driver Third Place Prediction: {{seasonPrediction.driverThirdPlace.familyName}}
+      h5 -------------------------------------------------------------------------
+      h5 Constructor First Place Prediction: {{seasonPrediction.constructorFirstPlace.Constructor.name}}
+      h5 Constructor Second Place Prediction: {{seasonPrediction.constructorSecondPlace.Constructor.name}}
+      h5 Constructor Third Place Prediction: {{seasonPrediction.constructorThirdPlace.Constructor.name}}
+      h5 -------------------------------------------------------------------------
+      h5 Most Poll Positions: {{seasonPrediction.topPoll}}
+      h5 Most Disqualifications: {{seasonPrediction.disqualifications}}
+      h5 Total Retirements: {{seasonPrediction.totalRetirements}}
 .row
   .col-xs-12
-    h3#history.underline.center.bold Prediction History
+    h3#history.underline.center.bold Prediction History:
+      .container
+        .col-xs-4(ng-repeat='racePrediction in racePredictions track by $index')
+          h5.underline.topMargin {{racePrediction.currentSeason}} {{racePrediction.raceName}} Predictions:
+          h6 Driver First Place Prediction: {{racePrediction.driverFirstPlace.familyName}}
+          h6 Driver Second Place Prediction: {{racePrediction.driverSecondPlace.familyName}}
+          h6 Driver Third Place Prediction: {{racePrediction.driverThirdPlace.familyName}}
+          h6 ------------------------------------------------------------
+          h6 Constructor First Place Prediction: {{racePrediction.constructorFirstPlace.Constructor.name}}
+          h6 Poll Position Driver: {{racePrediction.pollPosition.familyName}}
+          h6 Fastest Pit Stop: {{racePredictions.pitStop}}
+          h6 ------------------------------------------------------------
+          h6 Number of Retirements: {{racePrediction.disqualifications}}
+          h6 Fastest Lap Time: {{racePrediction.lapTime}}
+          h6 Driver of Fastest Lap: {{racePrediction.driverLapTime.familyName}}

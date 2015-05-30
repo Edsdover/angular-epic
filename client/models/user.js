@@ -18,6 +18,9 @@ angular.module('f1-index')
   User.show = function(){
     return $http.get(nodeUrl + '/users');
   };
+  User.find = function(userId){
+    return $http.get(nodeUrl + '/users/' + userId);
+  };
   User.oauth = function(provider){
     return $rootScope.afAuth.$authWithOAuthPopup(provider);
   };

@@ -1,0 +1,31 @@
+h3.underline.bold Formula 1 Prediction Homepage
+.row
+  .col-md-8.col-xs-offset-2
+    h5 Hello and Welcome!
+    h5 F1-index is your one stop for research and pitting your knowledge against other fans.
+    h5 Register to submit your own predictions and create your own profile!
+.row.topMargin
+  .col-sm-5.col-sm-offset-1
+    h4.underline.bold Leader Board
+    table.table.table-striped.table-hover.white
+     thead
+      tr
+       th(ng-click="predicate='name'; reverse=!reverse") User Name
+       th(ng-click="predicate='rank'; reverse=!reverse") Rank
+       th(ng-click="predicate='points'; reverse=!reverse") Points
+       th Photo
+     tbody
+      tr(ng-repeat='user in users | orderBy:predicate:reverse')
+       td {{user.username}}
+       td {{user.rank}} 1
+       td {{user.points}} 0
+       td: img.img-responsive.photo(ng-src='{{user.avatar}}', ng-class='photo')
+  .col-sm-5.col-xs-11
+   h4.underline.bold Last Race Results for {{lastRace.raceName}}
+   button.btn.btn-sm.btn-warning(ng-click='showLastRace()') Show Results
+   div.white(ng-if='!showLast')
+       h5 First Place: {{lastRace.Results[0].Driver.familyName}}
+       h5 Second Place: {{lastRace.Results[1].Driver.familyName}}
+       h5 Third Place: {{lastRace.Results[2].Driver.familyName}}
+       h5 --------------------------------------------------------------------------------------
+       h5 Third Place: {{lastRace.Results[2].Driver.familyName}}

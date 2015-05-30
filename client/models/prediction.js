@@ -19,7 +19,6 @@ angular.module('f1-index')
     this.raceName = $rootScope.currentRace;
     this.currentSeason = $rootScope.currentSeason;
     this.username = $rootScope.displayName;
-    console.log(obj);
   }
   Prediction.prototype.save = function(){
     return $http.put(nodeUrl + '/predictions', this);
