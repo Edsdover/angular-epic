@@ -7,12 +7,12 @@ angular.module('f1-index')
 
   User.find($scope.activeUser.uid)
   .then(function(response){
-    console.log(response);
     $scope.user = response.data.user;
   });
   var userPredictions = [];
   Prediction.findAll(username)
   .then(function(response){
+    console.log(response);
     var fullArray = response.data.predictions;
     fullArray.forEach(function(prediction){
       if(prediction.username === username){
@@ -21,7 +21,7 @@ angular.module('f1-index')
       }
     });
   });
-  
+
   $scope.racePredictions = [];
   $scope.seasonPrediction = [];
   function setScope(){

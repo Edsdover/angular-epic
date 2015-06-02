@@ -1,10 +1,12 @@
-h2.bold.underline Predictions Control:
+h4.bold.underline Predictions Control:
 .row
   .col-md-6.col-md-offset-1.col-xs-11
-    h4#predictionHeader.bold Fill out the boxes below to make your predictions!
+    img.f1Pic(src='../../assets/racePic.jpg')
   .col-md-5.col-xs-11
     h4 Rules:
     p#predictionDirections
+      | Fill out the boxes below to make your predictions!
+      br
       | Predictions for each Grand Prix will open two weeks prior to the race.
       br
       | The cut off for submission is
@@ -14,7 +16,9 @@ h2.bold.underline Predictions Control:
       | Season predictions will close after the 
       u sixth
       |  race of the season.
-.row.white(ng-if='seasonFormComplete')
+      br
+      | All submissions are final!
+.row.white.topMargin(ng-if='seasonFormComplete')
   .col-xs-8.col-xs-offset-3
     h4 You have submitted your predictions for the current season!
 .row.white(ng-if='!seasonFormComplete')
@@ -83,19 +87,19 @@ h2.bold.underline Predictions Control:
           select.options.gray(ng-model='racePrediction.pollPosition', ng-options='driver.familyName for driver in drivers')
             option(value='') Select Driver
       .form-group
+        h6.inputPadding Fastest Qualifying Lap Time
+          input.options.gray(type='number' ng-model='racePrediction.lapTime')
+      .form-group
         h6 Fastest Lap Driver : {{selectedItem}}
           select.options.gray(ng-model='racePrediction.driverLapTime', ng-options='driver.familyName for driver in drivers')
                 option(value='') Select Driver
-      .form-group
-        h6 First Place Constructor : {{selectedItem}}
-          select.options.gray(ng-model='racePrediction.constructorFirstPlace', ng-options='constructor.Constructor.name for constructor in constructors')
-            option(value='') Select Constructor
   .col-md-3.col-xs-11
     .form-group
+      h6 First Place Constructor : {{selectedItem}}
+        select.options.gray(ng-model='racePrediction.constructorFirstPlace', ng-options='constructor.Constructor.name for constructor in constructors')
+          option(value='') Select Constructor
       h6 Quickest Pit Stop
         input.options.gray(type='number' ng-model='racePrediction.pitStop')
-      h6.inputPadding Fastest Lap Time
-        input.options.gray(type='number' ng-model='racePrediction.lapTime')
       h6.inputPadding Number of Retirements
         input.options.gray(type='number' ng-model='racePrediction.disqualifications')
 .row.white(ng-if='!raceFormComplete')

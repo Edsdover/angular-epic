@@ -7,7 +7,7 @@ angular.module('f1-index')
   $scope.oauth = function(provider){
     User.oauth(provider)
     .then(function(){
-      $state.go('dashboards');
+      $state.go('home');
     });
   };
 
@@ -23,7 +23,7 @@ angular.module('f1-index')
     }else{
       User.login(user)
       .then(function(){
-        $state.go('dashboards');
+        $state.go('home');
       })
       .catch(function(){
         $window.swal({title: 'Login Error', text: 'There was a problem with your login. Please try again.', type: 'error'});

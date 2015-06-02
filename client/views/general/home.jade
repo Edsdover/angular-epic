@@ -1,9 +1,12 @@
-h3.underline.bold Formula 1 Prediction Homepage
 .row
-  .col-md-8.col-xs-offset-2
-    h5 Hello and Welcome!
-    h5 F1-index is your one stop for research and pitting your knowledge against other fans.
-    h5 Register to submit your own predictions and create your own profile!
+  .col-md-5.col-md-offset-1
+    img.f1Pic(src='../../assets/grid.jpg')
+  .col-md-5
+    h4.center.bold It's Lights Out, and Away We Go!
+    h5.topMargin F1-index is your one stop for research and pitting your knowledge against other fans.
+    h5(ng-hide='activeUser') Register to submit your own predictions and create your own profile!
+    button(ng-hide='activeUser').button.topMargin.btn.btn-success: a(ui-sref='register'): i.fa.fa-user-plus.black &nbsp; Register
+    h5(ng-show='activeUser') Welcome back! If you haven't already done so head over to the Profile tab to customize your account. Then check out the Prediction Control to test your skills! 
 .row.topMargin
   .col-sm-5.col-sm-offset-1
     h4.underline.bold Leader Board
@@ -22,10 +25,16 @@ h3.underline.bold Formula 1 Prediction Homepage
        td: img.img-responsive.photo(ng-src='{{user.avatar}}', ng-class='photo')
   .col-sm-5.col-xs-11
    h4.underline.bold Last Race Results for {{lastRace.raceName}}
-   button.btn.btn-sm.btn-warning(ng-click='showLastRace()') Show Results
-   div.white(ng-if='!showLast')
+   button.btn.btn-sm.btn-warning.button(ng-click='showLastRace()') Show Results
+   div.white(ng-if='showLast')
        h5 First Place: {{lastRace.Results[0].Driver.familyName}}
        h5 Second Place: {{lastRace.Results[1].Driver.familyName}}
        h5 Third Place: {{lastRace.Results[2].Driver.familyName}}
        h5 --------------------------------------------------------------------------------------
-       h5 Third Place: {{lastRace.Results[2].Driver.familyName}}
+       h5 First Place Constructor: Mercedes
+       h5 Quickest Pit Stop: {{bestPitTime}} seconds
+       h5 Number of Retirements: {{raceRetirements}}
+       h5 --------------------------------------------------------------------------------------
+       h5 Poll Position: {{lastPollWin.Driver.familyName}}
+       h5 Fastest Qualifying Lap Time: {{bestLapTime}} seconds
+       h5 Fastest Lap Driver: {{bestLapDriver}}

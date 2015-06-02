@@ -7,6 +7,7 @@ html(lang='en', ng-app='f1-index')
     title f1-index
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/paper/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css')
     link(rel='stylesheet', href='/vendor/sweetalert/dist/sweetalert.css')
     link(rel='stylesheet', href=isProd ? '/index.min.css' : '/index.css')
     link(rel='shortcut icon', href='/favicon.ico')
@@ -16,6 +17,24 @@ html(lang='en', ng-app='f1-index')
       .row
         .col-xs-12
           div(ui-view)
+      .row.topPadding.topMargin.white
+        .col-md-8.col-md-offset-3.col-xs-11
+          img#mePic(src='/assets/mePic.jpg')
+          h6.footer.bold.underline About the Author:
+          h6.footer#about1 Name: Edwin Dover
+          h6.footer#about2 Email: Edsdover@gmail.com
+      .row.white
+        .col-md-8.col-md-offset-3.col-xs-11
+          a.footer.leftMargin(href='http://stackoverflow.com/users/4753583/edwin-dover')
+            h6#about3 StackOverFlow
+          a.footer(href='https://www.linkedin.com/in/edwindover/')
+            h6#about4 LinkedIn
+          a.footer(href='https://plus.google.com/+EdwinDover')
+            h6#about5 Google+
+          a.footer(href='http://movie-tribute.edwindover.com/')
+            h6#about6 GitHub
+          a.footer(href='http://www.quora.com/Edwin-Dover')
+            h6#about7 Quora
 
     script(src='/vendor/angular/angular.min.js')
     script(src='/vendor/webcamjs/webcam.js')

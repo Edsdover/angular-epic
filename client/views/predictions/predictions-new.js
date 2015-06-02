@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('f1-index')
-.controller('PredictionsCtrl', function($rootScope, $scope, $window, Prediction){
+.controller('PredictionsCtrl', function($rootScope, $scope, $window, Prediction, $state){
 
   $scope.seasonPrediction = {};
   $scope.racePrediction = {};
@@ -70,21 +70,22 @@ angular.module('f1-index')
     var prediction = new Prediction($scope.seasonPrediction);
     prediction.save(obj)
     .then(function(){
-      $window.swal({title: 'Profile Updated', text: 'Congratulations, your profile was updated.', type: 'success'});
+      $window.swal({title: 'Prediction Success', text: 'Congratulations, your submition was saved.', type: 'success'});
+      $state.go('dashboards');
     })
     .catch(function(){
-      $window.swal({title: 'Profile Save Error', text: 'Warning, there was a problem saving your profile.', type: 'error'});
+      $window.swal({title: 'Prediction Save Error', text: 'Warning, there was a problem saving your prediction.', type: 'error'});
     });
   };
   $scope.submitRacePrediction = function(obj){
-    console.log(obj);
     var prediction = new Prediction(obj);
     prediction.save(obj)
     .then(function(){
-      $window.swal({title: 'Profile Updated', text: 'Congratulations, your profile was updated.', type: 'success'});
+      $state.go('dashboards');
+      $window.swal({title: 'Prediction Updated', text: 'Congratulations, your submition was saved.', type: 'success'});
     })
     .catch(function(){
-      $window.swal({title: 'Profile Save Error', text: 'Warning, there was a problem saving your profile.', type: 'error'});
+      $window.swal({title: 'Prediction Save Error', text: 'Warning, there was a problem saving your submission.', type: 'error'});
     });
   };
 
