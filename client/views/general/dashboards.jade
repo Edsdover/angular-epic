@@ -1,43 +1,44 @@
-h2 DashBoard
 .col-md-4.col-md-offset-1.col-xs-11
-  form(name='userForm', novalidate)
-    .form-group
-    h3(ng-if='user.name').underline.bold.predictionHeader {{user.name}}'s Profile
-  .row.white
-    img(ng-if='user.photo').img-responsive.img-thumbnail.center-block#photo(ng-src='{{user.photo}}')
-  .row.white
-    img(ng-if='user.avatar').img-responsive.img-thumbnail.center-block#avatar(ng-src='{{user.avatar}}')
-  .row.white
-      h4.center {{user.username}}
-      h4.center {{user.email}}
-      h4.center {{user.phone}}
-      button.btn.btn-xs.btn-warning.center-block(ng-click='editProfile()') Edit Profile
+  div.box-shadow.white.padding.topMargin
+    form(name='userForm', novalidate)
+      .form-group
+      h3(ng-if='user.name').underline.bold.predictionHeader {{user.name}}'s Profile
+    .row
+      img(ng-if='user.photo').img-responsive.img-thumbnail.center-block.box-shadow.topMargin#photo(ng-src='{{user.photo}}')
+    .row
+      img(ng-if='user.avatar').img-responsive.img-thumbnail.center-block.box-shadow.topMargin#avatar(ng-src='{{user.avatar}}')
+    .row
+        h4.center {{user.username}}
+        h4.center {{user.email}}
+        h4.center {{user.phone}}
+        button.btn.btn-xs.btn-warning.center-block(ng-click='editProfile()') Edit Profile
 .col-md-5.col-md-offset-1.col-xs-11
-  form(name='userForm', novalidate)
-    .form-group
-      h3.underline.bold.predictionHeader Profile Stats
-      h4 Your Points This Season: {{user.points}}
-      h4 Your Rank This Season: {{user.rank}}
-      button.btn.btn-success.button(ng-click='newPrediction()') Make Predictions
-      div(ng-if='seasonPrediction.driverFirstPlace').padding.white.topMargin
-        h4.underline {{seasonPrediction.currentSeason}} Season Predictions:
-        h5 Driver First Place Prediction: {{seasonPrediction.driverFirstPlace.familyName}}
-        h5 Driver Second Place Prediction: {{seasonPrediction.driverSecondPlace.familyName}}
-        h5 Driver Third Place Prediction: {{seasonPrediction.driverThirdPlace.familyName}}
-        h5 -------------------------------------------------------------------------
-        h5 Constructor First Place Prediction: {{seasonPrediction.constructorFirstPlace.Constructor.name}}
-        h5 Constructor Second Place Prediction: {{seasonPrediction.constructorSecondPlace.Constructor.name}}
-        h5 Constructor Third Place Prediction: {{seasonPrediction.constructorThirdPlace.Constructor.name}}
-        h5 -------------------------------------------------------------------------
-        h5 Most Poll Positions: {{seasonPrediction.topPoll}}
-        h5 Most Disqualifications: {{seasonPrediction.disqualifications}}
-        h5 Total Retirements: {{seasonPrediction.totalRetirements}}
+  div.box-shadow.white.padding.topMargin
+    form(name='userForm', novalidate)
+      .form-group
+        h3.underline.bold.predictionHeader Profile Stats
+        h4 Your Points This Season: {{user.points}}
+        h4 Your Rank This Season: {{user.rank}}
+        button.btn.btn-success.button(ng-click='newPrediction()') Make Predictions
+        div(ng-if='seasonPrediction.driverFirstPlace').topMargin
+          h4.underline {{seasonPrediction.currentSeason}} Season Predictions:
+          h5 Driver First Place Prediction: {{seasonPrediction.driverFirstPlace.familyName}}
+          h5 Driver Second Place Prediction: {{seasonPrediction.driverSecondPlace.familyName}}
+          h5 Driver Third Place Prediction: {{seasonPrediction.driverThirdPlace.familyName}}
+          h5 -------------------------------------------------------------------------
+          h5 Constructor First Place Prediction: {{seasonPrediction.constructorFirstPlace.Constructor.name}}
+          h5 Constructor Second Place Prediction: {{seasonPrediction.constructorSecondPlace.Constructor.name}}
+          h5 Constructor Third Place Prediction: {{seasonPrediction.constructorThirdPlace.Constructor.name}}
+          h5 -------------------------------------------------------------------------
+          h5 Most Poll Positions: {{seasonPrediction.topPoll}}
+          h5 Most Disqualifications: {{seasonPrediction.disqualifications}}
+          h5 Total Retirements: {{seasonPrediction.totalRetirements}}
 .row
   .col-xs-12
     h3#history.underline.center.bold Prediction History:
       .container
         .col-xs-4(ng-repeat='racePrediction in racePredictions track by $index')
-          div.padding.white
+          div.padding.white.box-shadow.topMargin
             h5.underline {{racePrediction.currentSeason}} {{racePrediction.raceName}} Predictions:
             h6 Driver First Place Prediction: {{racePrediction.driverFirstPlace.familyName}}
             h6 Driver Second Place Prediction: {{racePrediction.driverSecondPlace.familyName}}

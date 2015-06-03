@@ -1,14 +1,13 @@
-h4.bold.underline Predictions Control:
 .row
-  .col-md-5.col-md-offset-1.col-xs-11
+  .col-md-5.col-md-offset-1.col-xs-11.topMargin
     div#cf4a.box-shadow
       img.f1Pic(src='../../assets/racePic.jpg')
       img.f1Pic(src='../../assets/grid.jpg')
       img.f1Pic(src='../../assets/f1Pic.jpg')
       img.f1Pic(src='../../assets/sparks.jpg')
       img.f1Pic(src='../../assets/crash.jpg')
-  .col-md-5.col-xs-11
-    div.white.padding.box-shadow
+  .col-md-5.col-xs-11.topMargin
+    div.white.padding.box-shadow.topMargin
       h4 Rules:
       p#predictionDirections
         | Fill out the boxes below to make your predictions!
@@ -27,7 +26,7 @@ h4.bold.underline Predictions Control:
 .row.white.topMargin(ng-if='seasonFormComplete')
   .col-xs-8.col-xs-offset-3
     h4 You have submitted your predictions for the current season!
-.row.white(ng-if='!seasonFormComplete')
+.row.white.topMargin(ng-if='!seasonFormComplete')
   h4.predictionHeader.center {{currentSeason}} Season Predictions:
   .col-md-3.col-md-offset-1.col-xs-11
     form(name='userForm', novalidate)

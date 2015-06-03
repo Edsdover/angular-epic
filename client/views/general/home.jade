@@ -1,17 +1,17 @@
 .row
   .col-md-5.col-md-offset-1
-    div#cf4a.topMargin.box-shadow.rightMargin
+    div#cf4a.topMargin.box-shadow
       img.f1Pic(src='../../assets/racePic.jpg')
       img.f1Pic(src='../../assets/grid.jpg')
       img.f1Pic(src='../../assets/f1Pic.jpg')
       img.f1Pic(src='../../assets/sparks.jpg')
       img.f1Pic(src='../../assets/crash.jpg')
-  .col-md-5.box-shadow.white
+  .col-md-5.box-shadow.white.topMargin
     div.padding
       h5.center.bold(ng-if='isTime') Time Until {{nextRace}}:
       h5.center: timer(end-time='dateTime' ng-if='isTime') {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds
     div.white.padding
-      h4.center.bold It's Lights Out, and Away We Go!
+      h4.center.bold.underline It's Lights Out, and Away We Go!
       h5.topMargin F1-index is your one stop for research and pitting your knowledge against other fans.
       h5(ng-hide='activeUser') Register to submit your own predictions and create your own profile!
       button(ng-hide='activeUser').button.topMargin.btn.btn-success: a(ui-sref='register'): i.fa.fa-user-plus.black &nbsp; Register

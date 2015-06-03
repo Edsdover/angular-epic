@@ -26,10 +26,6 @@ angular.module('f1-index')
       $rootScope.activeUser = data;
       $rootScope.displayName = getDisplayName(data);
       $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
-      // User.initialize().then(function(response){
-      //   $rootScope.activeUser.mongoId = response.data;
-      //   goHome();
-      // });
     }else{
       $rootScope.activeUser = null;
       $rootScope.displayName = null;

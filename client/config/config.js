@@ -5,7 +5,7 @@ angular.module('f1-index')
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  // .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
+  .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   // .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
   .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
   .state('predictions', {url: '/predictions', templateUrl: '/views/predictions/predictions.html', abstract: true})
