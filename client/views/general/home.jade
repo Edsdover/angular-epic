@@ -1,32 +1,41 @@
 .row
   .col-md-5.col-md-offset-1
-    img.f1Pic(src='../../assets/grid.jpg')
-  .col-md-5
-    h4.center.bold It's Lights Out, and Away We Go!
-    h5.topMargin F1-index is your one stop for research and pitting your knowledge against other fans.
-    h5(ng-hide='activeUser') Register to submit your own predictions and create your own profile!
-    button(ng-hide='activeUser').button.topMargin.btn.btn-success: a(ui-sref='register'): i.fa.fa-user-plus.black &nbsp; Register
-    h5(ng-show='activeUser') Welcome back! If you haven't already done so head over to the Profile tab to customize your account. Then check out the Prediction Control to test your skills! 
+    div#cf4a.topMargin.box-shadow.rightMargin
+      img.f1Pic(src='../../assets/racePic.jpg')
+      img.f1Pic(src='../../assets/grid.jpg')
+      img.f1Pic(src='../../assets/f1Pic.jpg')
+      img.f1Pic(src='../../assets/sparks.jpg')
+      img.f1Pic(src='../../assets/crash.jpg')
+  .col-md-5.box-shadow.white
+    div.padding
+      h5.center.bold(ng-if='isTime') Time Until {{nextRace}}:
+      h5.center: timer(end-time='dateTime' ng-if='isTime') {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds
+    div.white.padding
+      h4.center.bold It's Lights Out, and Away We Go!
+      h5.topMargin F1-index is your one stop for research and pitting your knowledge against other fans.
+      h5(ng-hide='activeUser') Register to submit your own predictions and create your own profile!
+      button(ng-hide='activeUser').button.topMargin.btn.btn-success: a(ui-sref='register'): i.fa.fa-user-plus.black &nbsp; Register
+      h5(ng-show='activeUser') Welcome back! If you haven't already done so head over to the Profile tab to customize your account. Then check out the Prediction Control to test your skills! 
 .row.topMargin
-  .col-sm-5.col-sm-offset-1
+  .col-sm-4.col-sm-offset-1.box-shadow.white
     h4.underline.bold Leader Board
-    table.table.table-striped.table-hover.white
+    table.table.table-striped.table-hover
      thead
       tr
-       th(ng-click="predicate='name'; reverse=!reverse") User Name
        th(ng-click="predicate='rank'; reverse=!reverse") Rank
+       th(ng-click="predicate='name'; reverse=!reverse") User Name
        th(ng-click="predicate='points'; reverse=!reverse") Points
        th Photo
      tbody
       tr(ng-repeat='user in users | orderBy:predicate:reverse')
+       td {{user.rank}}
        td {{user.username}}
-       td {{user.rank}} 1
-       td {{user.points}} 0
+       td {{user.points}}
        td: img.img-responsive.photo(ng-src='{{user.avatar}}', ng-class='photo')
-  .col-sm-5.col-xs-11
+  .col-sm-5.col-sm-offset-1.col-xs-11.box-shadow.white
    h4.underline.bold Last Race Results for {{lastRace.raceName}}
-   button.btn.btn-sm.btn-warning.button(ng-click='showLastRace()') Show Results
-   div.white(ng-if='showLast')
+   button.btn.btn-sm.btn-warning.button.bottomMargin(ng-click='showLastRace()') Show Results
+   div.padding(ng-if='showLast')
        h5 First Place: {{lastRace.Results[0].Driver.familyName}}
        h5 Second Place: {{lastRace.Results[1].Driver.familyName}}
        h5 Third Place: {{lastRace.Results[2].Driver.familyName}}

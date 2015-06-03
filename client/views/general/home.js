@@ -6,6 +6,7 @@ angular.module('f1-index')
   var date = new Date();
   var year = date.getFullYear();
   $scope.showLast = false;
+  $scope.isTime = false;
   lastRound();
 
   $scope.showLastRace = function(){
@@ -44,7 +45,7 @@ angular.module('f1-index')
     .then(function(response){
       $scope.$apply(function(){
         currentRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        console.log('currentRoundStandings', currentRoundStandings);
+        // console.log('currentRoundStandings', currentRoundStandings);
         lastRoundStandings();
       });
     });
@@ -56,7 +57,7 @@ angular.module('f1-index')
     .then(function(response){
       $scope.$apply(function(){
         lastRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        console.log('lastRoundStandings', lastRoundStandings);
+        // console.log('lastRoundStandings', lastRoundStandings);
         bestLapTime();
       });
     });
@@ -88,6 +89,17 @@ angular.module('f1-index')
         pitStopTimes.push(stop.duration * 1);
       });
       $scope.bestPitTime = $window._.min(pitStopTimes);
+      countdown();
+    });
+  }
+  function countdown(){
+    $window.$.getJSON('http://ergast.com/api/f1/current.json')
+    .then(function(response){
+      $scope.nextRace = response.MRData.RaceTable.Races[currentRound].raceName;
+      var momentTime = moment(response.MRData.RaceTable.Races[currentRound].date + ' ' + response.MRData.RaceTable.Races[currentRound].time);
+      $scope.dateTime = momentTime;
+      $scope.isTime = true;
+      $scope.$apply();
     });
   }
 });

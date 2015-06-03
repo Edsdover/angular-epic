@@ -1,23 +1,29 @@
 h4.bold.underline Predictions Control:
 .row
-  .col-md-6.col-md-offset-1.col-xs-11
-    img.f1Pic(src='../../assets/racePic.jpg')
+  .col-md-5.col-md-offset-1.col-xs-11
+    div#cf4a.box-shadow
+      img.f1Pic(src='../../assets/racePic.jpg')
+      img.f1Pic(src='../../assets/grid.jpg')
+      img.f1Pic(src='../../assets/f1Pic.jpg')
+      img.f1Pic(src='../../assets/sparks.jpg')
+      img.f1Pic(src='../../assets/crash.jpg')
   .col-md-5.col-xs-11
-    h4 Rules:
-    p#predictionDirections
-      | Fill out the boxes below to make your predictions!
-      br
-      | Predictions for each Grand Prix will open two weeks prior to the race.
-      br
-      | The cut off for submission is
-      u.bold midnight
-      |  before the first qualifying session.
-      br
-      | Season predictions will close after the 
-      u sixth
-      |  race of the season.
-      br
-      | All submissions are final!
+    div.white.padding.box-shadow
+      h4 Rules:
+      p#predictionDirections
+        | Fill out the boxes below to make your predictions!
+        br
+        | Predictions for each Grand Prix will open two weeks prior to the race.
+        br
+        | The cut off for submission is
+        u.bold midnight
+        |  before the first qualifying session.
+        br
+        | Season predictions will close after the 
+        u sixth
+        |  race of the season.
+        br
+        | All submissions are final!
 .row.white.topMargin(ng-if='seasonFormComplete')
   .col-xs-8.col-xs-offset-3
     h4 You have submitted your predictions for the current season!
@@ -61,7 +67,7 @@ h4.bold.underline Predictions Control:
 .row.white(ng-if='!seasonFormComplete')
   .col-xs-3.col-xs-offset-4
     .form-group
-      button.btn.btn-sm.btn-success.options(ng-click='submitSeasonPrediction(seasonPrediction)') Submit Prediction
+      button.btn.btn-sm.btn-success.options.button(ng-click='submitSeasonPrediction(seasonPrediction)') Submit Prediction
 .row.topMargin.white(ng-if='raceFormComplete')
   .col-xs-8.col-xs-offset-3
     h4 You have submitted your predictions for the current race!
@@ -105,4 +111,4 @@ h4.bold.underline Predictions Control:
 .row.white(ng-if='!raceFormComplete')
   .col-xs-3.col-xs-offset-4
     .form-group
-      button.btn.btn-sm.btn-success.options(ng-click='submitRacePrediction(racePrediction)') Submit Prediction
+      button.btn.btn-sm.btn-success.options.button(ng-click='submitRacePrediction(racePrediction)') Submit Prediction

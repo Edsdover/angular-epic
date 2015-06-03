@@ -9,6 +9,7 @@
 }
 .button{
   width: 100%;
+  box-shadow: 0px 0px 10px black;
 }
 .options{
   width: 100%;
@@ -45,6 +46,56 @@
   margin-left: 4em;
   float: inherit;
 }
+#cf4a {
+  position:relative;
+  height: 250px;
+}
+#cf4a img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  animation-name: cf4FadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 25s;
+
+}
+@keyframes cf4FadeInOut {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+#cf4a img:nth-of-type(1) {
+  animation-delay: 20s;
+}
+#cf4a img:nth-of-type(2) {
+  animation-delay: 15s;
+}
+#cf4a img:nth-of-type(3) {
+  animation-delay: 10s;
+}
+#cf4a img:nth-of-type(4) {
+  animation-delay: 5s;
+}
+#cf4a img:nth-of-type(5) {
+  animation-delay: 0s;
+}
 .f1Pic{
   width: 100%;
   border: 5px solid black;
@@ -54,6 +105,9 @@
 }
 .topPadding{
   padding-top: 2em;
+}
+.padding{
+  padding: 1em;
 }
 .leftMargin{
   margin-left: 10em;
@@ -69,11 +123,20 @@
   background-color: #fff;
 }
 .backgroundColor{
-  background-color: #f5ebea;
+  background-color: rgba(155, 14, 0, 0.1);
 }
 .gray{
   background-color: #e0e0e0;
 }
 .black{
   color: #000;
+}
+.box-shadow{
+  box-shadow: 0px 0px 10px black;
+}
+.bottomMargin{
+  margin-bottom: 2em;
+}
+.rightMargin{
+  margin-right: 2em;
 }
