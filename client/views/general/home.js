@@ -59,6 +59,7 @@ angular.module('f1-index')
         lastRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
         // console.log('lastRoundStandings', lastRoundStandings);
         bestLapTime();
+        console.log(lastRoundStandings);
       });
     });
   }
