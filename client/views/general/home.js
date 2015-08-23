@@ -7,7 +7,7 @@ angular.module('f1-index')
   var year = date.getFullYear();
   $scope.showLast = false;
   $scope.isTime = false;
-  lastRound();
+  lastRoundGet();
 
   $scope.showLastRace = function(){
     $scope.showLast = true;
@@ -17,16 +17,16 @@ angular.module('f1-index')
     $scope.users = response.data.users;
   });
 
-  var lastRound = [];
+  var lastRound;
+  var lastRoundResults = [];
   var statusR = [];
-  function lastRound(){
+  function lastRoundGet(){
     $window.$.getJSON('http://ergast.com/api/f1/current/last/results.json')
     .then(function(response){
       $scope.$apply(function() {
         $scope.lastRace = response.MRData.RaceTable.Races[0];
-        // console.log('$scope.lastRace', $scope.lastRace.Results);
         lastRound = $scope.lastRace.round;
-        $scope.lastPollWin = $window._.find($scope.lastRace.Results, _.matchesProperty('grid', '1'));
+        $scope.lastPollWin = $window._.find($scope.lastRace.Results, $window._.matchesProperty('grid', '1'));
         var raceStatus = $scope.lastRace.Results;
         raceStatus.forEach(function(status){
           if(status.positionText === "R"){
@@ -45,26 +45,23 @@ angular.module('f1-index')
     .then(function(response){
       $scope.$apply(function(){
         currentRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        // console.log('currentRoundStandings', currentRoundStandings);
         lastRoundStandings();
       });
     });
   }
-  var lastStandings = [];
+  var lastConstructorStandings;
   function lastRoundStandings(){
     lastRound = lastRound - 1;
     $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + lastRound + '/constructorStandings.json')
     .then(function(response){
       $scope.$apply(function(){
-        lastRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        // console.log('lastRoundStandings', lastRoundStandings);
-        bestLapTime();
-        console.log(lastRoundStandings);
+        lastConstructorStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+        bestQualifyingTime();
       });
     });
   }
   var bestTimes= [];
-  function bestLapTime(){
+  function bestQualifyingTime(){
     currentRound = lastRound + 1;
     $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + currentRound + '/qualifying.json')
     .then(function(response){
@@ -76,7 +73,7 @@ angular.module('f1-index')
       lapRuns.forEach(function(run){
         bestTimes.push((run[0] * 60) + (run[1] * 1));
       });
-      $scope.bestLapTime = $window._.min(bestTimes);
+      $scope.bestQualifyingTime = $window._.min(bestTimes);
       bestPitStop();
     });
   }
@@ -97,7 +94,7 @@ angular.module('f1-index')
     $window.$.getJSON('http://ergast.com/api/f1/current.json')
     .then(function(response){
       $scope.nextRace = response.MRData.RaceTable.Races[currentRound].raceName;
-      var momentTime = moment(response.MRData.RaceTable.Races[currentRound].date + ' ' + response.MRData.RaceTable.Races[currentRound].time);
+      var momentTime = $window.moment(response.MRData.RaceTable.Races[currentRound].date + ' ' + response.MRData.RaceTable.Races[currentRound].time);
       $scope.dateTime = momentTime;
       $scope.isTime = true;
       $scope.$apply();
