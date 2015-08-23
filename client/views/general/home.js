@@ -17,7 +17,6 @@ angular.module('f1-index')
     $scope.users = response.data.users;
   });
 
-  var currentRound;
   var lastRound;
   var lastRoundResults = [];
   var retirements = [];
@@ -61,33 +60,9 @@ angular.module('f1-index')
         bestQualifyingTime();
       });
     });
-
-    var currentRoundStandings = [];
-    function currentStandings(){
-      $window.$.getJSON('http://ergast.com/api/f1/current/constructorStandings.json')
-      .then(function(response){
-        $scope.$apply(function(){
-          currentRoundStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-          lastRoundStandings();
-        });
-      });
-    }
-    var lastConstructorStandings;
-    function lastRoundStandings(){
-      lastRound = lastRound - 1;
-      $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + lastRound + '/constructorStandings.json')
-      .then(function(response){
-        $scope.$apply(function(){
-          lastConstructorStandings = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-          bestQualifyingTime();
-        });
-      });
-    }
     var bestTimes= [];
     function bestQualifyingTime(){
-      console.log('lastRound', lastRound);
-      currentRound = (lastRound * 1) + 1;
-      $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + currentRound + '/qualifying.json')
+      $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + lastRound + '/qualifying.json')
       .then(function(response){
         $scope.bestLapDriver = response.MRData.RaceTable.Races[0].QualifyingResults[0].Driver.familyName;
         var firstRun = response.MRData.RaceTable.Races[0].QualifyingResults[0].Q1.split(':');
@@ -103,11 +78,8 @@ angular.module('f1-index')
     }
     var pitStopTimes = [];
     function bestPitStop(){
-      currentRound = (lastRound * 1) + 1;
-      $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + currentRound + '/pitstops.json')
+      $window.$.getJSON('http://ergast.com/api/f1/' + year + '/' + lastRound + '/pitstops.json')
       .then(function(response){
-        console.log('http://ergast.com/api/f1/' + year + '/' + currentRound + '/pitstops.json');
-        console.log(response);
         var stops = response.MRData.RaceTable.Races[0].PitStops;
         stops.forEach(function(stop){
           pitStopTimes.push(stop.duration * 1);
@@ -117,6 +89,7 @@ angular.module('f1-index')
       });
     }
     function countdown(){
+      var currentRound = (lastRound * 1) + 1;
       $window.$.getJSON('http://ergast.com/api/f1/current.json')
       .then(function(response){
         $scope.nextRace = response.MRData.RaceTable.Races[currentRound].raceName;
